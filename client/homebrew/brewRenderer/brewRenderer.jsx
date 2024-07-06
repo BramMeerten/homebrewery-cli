@@ -136,8 +136,10 @@ const BrewRenderer = (props)=>{
 			const html = MarkdownLegacy.render(pageText);
 			return <BrewPage className='page phb' index={index} key={index} contents={html} />;
 		} else {
+      // TODO deze append ook altijd zelf doen (+split op \page)
 			pageText += `\n\n&nbsp;\n\\column\n&nbsp;`; //Artificial column break at page end to emulate column-fill:auto (until `wide` is used, when column-fill:balance will reappear)
 			const html = Markdown.render(pageText, index);
+      // TODO
 			return <BrewPage className='page' index={index} key={index} contents={html} />;
 		}
 	};
@@ -209,6 +211,7 @@ const BrewRenderer = (props)=>{
 				<NotificationPopup />
 			</div>
 
+       WOW COOL BEANS!!
 			{/*render in iFrame so broken code doesn't crash the site.*/}
 			<Frame id='BrewRenderer' initialContent={INITIAL_CONTENT}
 				style={{ width: '100%', height: '100%', visibility: state.visibility }}

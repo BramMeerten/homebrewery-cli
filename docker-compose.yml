@@ -4,6 +4,8 @@ services:
     image: mongo:latest
     volumes:
       - mongodata:/data/db
+    ports:
+      - "27017:27017"
   homebrewery:
     build:
       context: .

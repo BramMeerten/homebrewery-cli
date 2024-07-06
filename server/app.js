@@ -402,6 +402,7 @@ if(isLocalEnvironment){
 //Render the page
 const templateFn = require('./../client/template.js');
 const renderPage = async (req, res)=>{
+  console.log('What is this request?', req.brew);
 	// Create configuration object
 	const configuration = {
 		local       : isLocalEnvironment,

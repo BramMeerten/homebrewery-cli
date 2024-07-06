@@ -131,6 +131,7 @@ const mustacheSpans = {
 				const raw = src.slice(0, endToken);
 				const text = raw.slice(endTags || -2, -2);
 
+
 				return {                              // Token to generate
 					type   : 'mustacheSpans',           // Should match "name" above
 					raw    : raw,                       // Text to consume from the source
@@ -814,6 +815,7 @@ let globalPageNumber = 0;
 module.exports = {
 	marked : Marked,
 	render : (rawBrewText, pageNumber=1)=>{
+    // TODO render
 		globalVarsList[pageNumber] = {};						//Reset global links for current page, to ensure values are parsed in order
 		varsQueue              = [];						//Could move into MarkedVariables()
 		globalPageNumber        = pageNumber;
