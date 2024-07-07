@@ -40,12 +40,13 @@ function fileToHtml(file, options) {
       return;
     }
 
-		const rawPages = data.split(/^\\page$/gm);
-    for (let page of rawPages) {
-      const pageText = `${page}\n\n&nbsp;\n\\column\n&nbsp;`;
-      const html = Markdown.render(pageText, 0);
-      console.log(toHtml([html], basePath));
-    }
+    const pagesHtml = data
+      .split(/^\\page$/gm)
+      .map(page => {
+        const pageText = `${page}\n\n&nbsp;\n\\column\n&nbsp;`;
+        return Markdown.render(pageText, 0);
+      });
+    console.log(toHtml(pagesHtml, basePath));
   });
 }
 
@@ -53,7 +54,7 @@ function fileToHtml(file, options) {
 function brewPage(html, pageIndex) {
   // const purifyConfig = { FORCE_BODY: true, SANITIZE_DOM: false };
 	// const cleanText = DOMPurify.sanitize(html, purifyConfig);
-	return `<div class="page" id="p${pageIndex + 1}"} >
+	return `<div class="page" id="p${pageIndex + 1}">
 	         <div className='columnWrapper'>${html}</div>
 	       </div>`;
 }
